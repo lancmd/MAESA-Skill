@@ -17,3 +17,7 @@
 ## 验收
 
 分类栅格必须是整数编码并与主网格对齐。独立验证输出混淆矩阵、OA、Macro-F1、Macro-IoU 和各类别 precision/recall/F1/IoU。缺少独立验证样本时，成果可用于预览但状态必须是 `pending_validation`。
+
+## 审稿证据归档
+
+使用 `scripts/build_review_evidence.py --workspace <project>` 生成审稿证据包。该工具只把包含独立参考标签、坐标和来源字段的样本表作为精度输入；训练 ROI、模型输出或从分类图反抽的伪标签不会被当作独立样本。样本模板和状态报告写入最终成果的 `期刊论文/同行评议数据核查` 目录。填入样本后，调用 `scripts/lulc_accuracy.py` 为每期栅格生成混淆矩阵与 OA、Macro-F1、Macro-IoU 及逐类指标，并保留样本来源和 CRS。

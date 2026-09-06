@@ -95,6 +95,8 @@ python .\scripts\project_workflow.py --project .\project.json --run
 - `outputs_manifest.json`：输出文件、类型、大小、空间信息与哈希；
 - `provenance.json`：输入哈希、参数、软件版本、随机种子与时间；
 - `validation_summary.json`：分类、PLUS、InVEST、生态服务和制图验证状态；
+
+审稿证据可用 `scripts/build_review_evidence.py --workspace <project>` 一次性审计。它会生成独立分类样本模板、混淆矩阵计算入口、PLUS 历史回代/多随机种子状态和 RE 结构性归档摘要；缺失观测证据时保持 `pending_validation`，不会把训练 ROI、单次输出或网格检查写成精度结论。
 - `workflow_state.json`：可暂停/续跑阶段状态。
 
 分类评价应至少报告 OA、Macro-F1、Macro-IoU 和逐类精度；PLUS 应报告 FoM、关键地类精度及多随机种子稳定性；InVEST 应进行独立运行一致性和参数敏感性核对。只有具备这些证据后，模型结果才适合被表述为经验证的科研结果。
