@@ -4,3 +4,4 @@
 *.pt2 binary
 *.pth binary
 *.onnx binary
+deep_learning/model_packages/maesa-landuse-5class-bootstrap-v1/model.pt2 filter=lfs diff=lfs merge=lfs -text

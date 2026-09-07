@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "task": "image_classification",
+  "model_id": "maesa-landuse-5class-bootstrap-v1",
+  "format": "exported_program",
+  "architecture": "resnet50",
+  "weights": "model.pt2",
+  "sha256": "797985aa00a48f6ce65317327ada5fbbbfa217eb466defc5605d3e124e742b3f",
+  "classes": [
+    {"id": 1, "name": "cropland", "display_name": "耕地"},
+    {"id": 2, "name": "forest", "display_name": "林地"},
+    {"id": 3, "name": "grassland", "display_name": "草地"},
+    {"id": 4, "name": "built_up", "display_name": "建筑用地"},
+    {"id": 5, "name": "water", "display_name": "水体"}
+  ],
+  "input": {
+    "color_mode": "RGB",
+    "image_size": 128,
+    "mean": [0.485, 0.456, 0.406],
+    "std": [0.229, 0.224, 0.225]
+  },
+  "output": {"type": "logits"},
+  "training": {
+    "label_provenance": {
+      "origin": "spectral_high_confidence_bootstrap",
+      "warning": "Initial labels were generated from NDVI, NDWI and NDBI rules, not independent manual or field truth."
+    },
+    "sample_count": 40,
+    "train_sample_count": 30,
+    "validation_sample_count": 10,
+    "class_distribution": {"1": 8, "2": 8, "3": 8, "4": 8, "5": 8},
+    "initialization": "trusted local ResNet-50 backbone; five-class classifier head trained locally",
+    "best_validation": {"epoch": 4, "accuracy": 0.7, "macro_f1": 0.7133333333333333}
+  }
+}
